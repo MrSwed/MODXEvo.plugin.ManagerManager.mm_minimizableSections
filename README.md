@@ -21,7 +21,7 @@ Apply to all sections for all roles and templates
 ```
 mm_minimizablesections('*');
 ```
-Apple to the content and Template Variables sections for users with role "1" editing the documents with the template ID equals "3"
+Apply to the content and Template Variables sections for users with role "1" editing the documents with the template ID equals "3"
 ```
 mm_minimizablesections('content,tvs', '1', '3');
 ```
