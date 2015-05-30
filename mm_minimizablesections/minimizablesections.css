@@ -11,7 +11,7 @@
   top: 50%;
   margin-top: -0.8em;
 }
-.minimizable.closed:after {
+.minimizable.minimized:after {
   border-color: #838383 transparent transparent;
   margin-top: -0.3em;
 }
