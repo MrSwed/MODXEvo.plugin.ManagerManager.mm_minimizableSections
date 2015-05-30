@@ -13,7 +13,7 @@ Read this documentation of [ManagerManager](http://code.divandesign.biz/modx/man
  - **fields**     - The id(s) of the sections this should apply to. Use '*' for apply to all.
  - **roles**      - The roles that the widget is applied to (when this parameter is empty then widget is applied to the all roles).	{comma separated string}
  - **templates**  - Id of the templates to which this widget is applied (when this parameter is empty then widget is applied to the all templates).	{comma separated string}
- - **default**    - "close" - Set minimized by default.
+ - **minimized**  - {comma separated string} - The id(s) of the sections this should be minimized by default.
 
 ## Examples
 
@@ -27,5 +27,5 @@ mm_minimizablesections('content,tvs', '1', '3');
 ```
 Apply to all sections and set minimized Template variables and photos sections by default
 ```
-mm_minimizablesections('*','','','close');
+mm_minimizablesections('*','','','tvs,photos');
 ```
