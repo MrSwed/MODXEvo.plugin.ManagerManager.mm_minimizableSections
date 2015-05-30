@@ -1,0 +1,17 @@
+.minimizable {
+  cursor: pointer;
+  position: relative;
+}
+.minimizable:after {
+  content: "";
+  position: absolute;
+  right: 1em;
+  border: 0.6em solid;
+  border-color: transparent transparent #838383;
+  top: 50%;
+  margin-top: -0.8em;
+}
+.minimizable.closed:after {
+  border-color: #838383 transparent transparent;
+  margin-top: -0.3em;
+}
