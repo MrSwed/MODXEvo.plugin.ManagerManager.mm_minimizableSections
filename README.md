@@ -11,9 +11,11 @@ Read this documentation of [ManagerManager](http://code.divandesign.biz/modx/man
 
 ### Parameters
  - **fields**     - The id(s) of the sections this should apply to. Use '*' for apply to all.
- - **roles**      - The roles that the widget is applied to (when this parameter is empty then widget is applied to the all roles).	{comma separated string}
- - **templates**  - Id of the templates to which this widget is applied (when this parameter is empty then widget is applied to the all templates).	{comma separated string}
- - **minimized**  - {comma separated string} - The id(s) of the sections this should be minimized by default.
+ - **roles**      - The roles that the widget is applied to (when this parameter is empty then widget is applied to the all roles).
+ - **templates**  - Id of the templates to which this widget is applied (when this parameter is empty then widget is applied to the all templates).
+ - **minimized**  - The id(s) of the sections this should be minimized by default. Use '*' for apply to all.
+
+To specify multiple values, each parameter can be set separated by commas.
 
 ## Examples
 
