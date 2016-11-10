@@ -7,7 +7,7 @@
  * 
  * @uses ManagerManager plugin 0.6.2.
  * 
- * @param $sections {string_commaSeparated} — The id(s) of the sections this should apply to. Use '*' for apply to all. @required
+ * @param $sections {string_commaSeparated} — The id(s) of the sections this should apply to. Use '' for apply to all. Default: ''.
  * @param $roles {string_commaSeparated} — The roles that the widget is applied to (when this parameter is empty then widget is applied to the all roles). Default: ''.
  * @param $templates {string_commaSeparated} — Id of the templates to which this widget is applied (when this parameter is empty then widget is applied to the all templates). Default: ''.
  * @param $minimizedByDefault {string_commaSeparated} — The id(s) of the sections this should be minimized by default. Default: ''.
@@ -18,7 +18,7 @@
  */
 
 function mm_minimizableSections(
-	$sections,
+	$sections = '',
 	$roles = '',
 	$templates = '',
 	$minimizedByDefault = ''
@@ -37,6 +37,8 @@ function mm_minimizableSections(
 		
 		$e->output($output);
 	}else if ($e->name == 'OnDocFormRender'){
+		if ($sections == ''){$sections = '*';}
+		
 		$sections = makeArray($sections);
 		$minimizedByDefault = makeArray($minimizedByDefault);
 		
@@ -62,7 +64,7 @@ $j(".minimizable").filter("'.implode(',', $minimizedByDefault).'").addClass("min
 
 /**
  * mm_minimizableSections_prepareSectionHeaderSelector
- * @version 1.0.1 (2016-11-10)
+ * @version 1.0.2 (2016-11-10)
  * 
  * @param $sectionId {string} — Section name. @required
  * 
