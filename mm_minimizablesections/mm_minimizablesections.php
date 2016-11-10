@@ -1,7 +1,7 @@
 <?php
 /**
  * mm_minimizableSections
- * @version 0.2 (2015-05-30)
+ * @version 0.3 (2016-11-11)
  * 
  * @desc A widget for ManagerManager plugin that allows one, few or all sections to be minimizable on the document edit page.
  * 
@@ -15,8 +15,11 @@
  * @param $params['templates'] {string_commaSeparated} — Id of the templates to which this widget is applied (when this parameter is empty then widget is applied to the all templates). Default: ''.
  * 
  * @author Sergey Davydov <webmaster@sdcollection.com>
+ * @author DivanDesign <code@DivanDesign.biz>
  * 
- * @copyright 2015
+ * @link http://code.divandesign.biz/modx/mm_minimizablesections/0.3
+ * 
+ * @copyright 2015–2016
  */
 
 function mm_minimizableSections($params = []){
