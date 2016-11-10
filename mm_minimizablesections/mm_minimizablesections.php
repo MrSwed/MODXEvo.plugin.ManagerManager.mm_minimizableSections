@@ -33,7 +33,7 @@ function prepareSection($section) {
 	}
 }
 
-function mm_minimizableSections($sections, $roles = '', $templates = '', $minimized = '') {
+function mm_minimizableSections($sections='', $roles = '', $templates = '', $minimized = '') {
 	if (!useThisRule($roles, $templates)) {
 		return;
 	}
@@ -49,6 +49,7 @@ function mm_minimizableSections($sections, $roles = '', $templates = '', $minimi
 
 		$e->output($output);
 	} else if ($e->name == 'OnDocFormRender') {
+		if (!$sections) $sections = '*';
 		$sections = makeArray($sections);
 		$minimized = makeArray($minimized);
 
