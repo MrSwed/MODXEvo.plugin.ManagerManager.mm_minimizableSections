@@ -56,6 +56,7 @@ function mm_minimizableSections($params = []){
 		$widgetDir = $modx->config['site_url'].'assets/plugins/managermanager/widgets/mm_minimizablesections/';
 		
 		$output .= includeJsCss($widgetDir.'mm_minimizableSections.css', 'html');
+		$output .= includeJsCss($widgetDir.'jQuery.ddMM.mm_minimizableSections.js', 'html', 'jQuery.ddMM.mm_minimizableSections.js', '1.0');
 		
 		$e->output($output);
 	}else if ($e->name == 'OnDocFormRender'){
@@ -70,12 +71,9 @@ function mm_minimizableSections($params = []){
 		$output .= '//---------- mm_minimizableSections :: Begin -----'.PHP_EOL;
 		
 		$output .= '
-$j("'.implode(',', $params->sections).'", "#documentPane").addClass("mm_minimizableSections_header").on("click", function(){
-	var $this = $j(this);
-	
-	$this.next().slideToggle(400, function(){$this.toggleClass("mm_minimizableSections_minimized");});
+$j("'.implode(',', $params->sections).'", "#documentPane").mm_minimizableSections({
+	minimizedByDefault: "'.implode(',', $params->minimizedByDefault).'"
 });
-$j(".mm_minimizableSections_header").filter("'.implode(',', $params->minimizedByDefault).'").addClass("mm_minimizableSections_minimized").next().hide();
 ';
 		
 		$output .= '//---------- mm_minimizableSections :: End -----'.PHP_EOL;
