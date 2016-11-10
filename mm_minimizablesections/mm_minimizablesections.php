@@ -70,12 +70,12 @@ function mm_minimizableSections($params = []){
 		$output .= '//---------- mm_minimizableSections :: Begin -----'.PHP_EOL;
 		
 		$output .= '
-$j("'.implode(',', $params->sections).'", "#documentPane").addClass("minimizable").on("click", function(){
+$j("'.implode(',', $params->sections).'", "#documentPane").addClass("mm_minimizableSections_header").on("click", function(){
 	var $this = $j(this);
 	
-	$this.next().slideToggle(400, function(){$this.toggleClass("minimized");});
+	$this.next().slideToggle(400, function(){$this.toggleClass("mm_minimizableSections_minimized");});
 });
-$j(".minimizable").filter("'.implode(',', $params->minimizedByDefault).'").addClass("minimized").next().hide();
+$j(".mm_minimizableSections_header").filter("'.implode(',', $params->minimizedByDefault).'").addClass("mm_minimizableSections_minimized").next().hide();
 ';
 		
 		$output .= '//---------- mm_minimizableSections :: End -----'.PHP_EOL;
