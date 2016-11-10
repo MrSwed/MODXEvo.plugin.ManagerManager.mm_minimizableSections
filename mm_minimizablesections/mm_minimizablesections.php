@@ -55,7 +55,7 @@ function mm_minimizableSections($params = []){
 	if ($e->name == 'OnDocFormPrerender'){
 		$widgetDir = $modx->config['site_url'].'assets/plugins/managermanager/widgets/mm_minimizablesections/';
 		
-		$output .= includeJsCss($widgetDir.'minimizablesections.css', 'html');
+		$output .= includeJsCss($widgetDir.'mm_minimizableSections.css', 'html');
 		
 		$e->output($output);
 	}else if ($e->name == 'OnDocFormRender'){
