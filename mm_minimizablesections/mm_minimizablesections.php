@@ -17,24 +17,6 @@
  * @copyright 2015
  */
 
-function prepareSection($section){
-	switch ($section){
-		case 'access':
-			return '#sectionAccessHeader';
-		break;
-		
-		case '*':
-			return '.sectionHeader';
-		break;
-		
-		default:
-			$section = prepareSectionId($section);
-			
-			return '#'.$section.'_header';
-		break;
-	}
-}
-
 function mm_minimizableSections(
 	$sections,
 	$roles = '',
@@ -58,8 +40,8 @@ function mm_minimizableSections(
 		$sections = makeArray($sections);
 		$minimized = makeArray($minimized);
 		
-		$sections = array_map('prepareSection', $sections);
-		$minimized = array_map('prepareSection', $minimized);
+		$sections = array_map('mm_minimizableSections_prepareSectionHeaderSelector', $sections);
+		$minimized = array_map('mm_minimizableSections_prepareSectionHeaderSelector', $minimized);
 		
 		$output .= '//---------- mm_minimizableSections :: Begin -----'.PHP_EOL;
 		
@@ -76,5 +58,35 @@ $j(".minimizable").filter("'.implode(',', $minimized).'").addClass("minimized").
 		
 		$e->output($output);
 	}
+}
+
+/**
+ * mm_minimizableSections_prepareSectionHeaderSelector
+ * @version 1.0.1 (2016-11-10)
+ * 
+ * @param $sectionId {string} — Section name. @required
+ * 
+ * @return {string}
+ */
+function mm_minimizableSections_prepareSectionHeaderSelector($sectionId){
+	$result = '';
+	
+	switch ($sectionId){
+		case 'access':
+			$result = '#sectionAccessHeader';
+		break;
+		
+		case '*':
+			$result = '.sectionHeader';
+		break;
+		
+		default:
+			$sectionId = prepareSectionId($sectionId);
+			
+			$result = '#'.$sectionId.'_header';
+		break;
+	}
+	
+	return $result;
 }
 ?>
