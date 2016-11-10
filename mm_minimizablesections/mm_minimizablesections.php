@@ -5,25 +5,47 @@
  * 
  * @desc A widget for ManagerManager plugin that allows one, few or all sections to be minimizable on the document edit page.
  * 
- * @uses ManagerManager plugin 0.6.2.
+ * @uses PHP >= 5.4.
+ * @uses MODXEvo.plugin.ManagerManager >= 0.7.
  * 
- * @param $sections {string_commaSeparated} — The id(s) of the sections this should apply to. Use '' for apply to all. Default: ''.
- * @param $roles {string_commaSeparated} — The roles that the widget is applied to (when this parameter is empty then widget is applied to the all roles). Default: ''.
- * @param $templates {string_commaSeparated} — Id of the templates to which this widget is applied (when this parameter is empty then widget is applied to the all templates). Default: ''.
- * @param $minimizedByDefault {string_commaSeparated} — The id(s) of the sections this should be minimized by default. Default: ''.
+ * @param $params {array_associative|stdClass} — The object of params.
+ * @param $params['sections'] {string_commaSeparated} — The id(s) of the sections this should apply to. Use '' for apply to all. Default: ''.
+ * @param $params['minimizedByDefault'] {string_commaSeparated} — The id(s) of the sections this should be minimized by default. Default: ''.
+ * @param $params['roles'] {string_commaSeparated} — The roles that the widget is applied to (when this parameter is empty then widget is applied to the all roles). Default: ''.
+ * @param $params['templates'] {string_commaSeparated} — Id of the templates to which this widget is applied (when this parameter is empty then widget is applied to the all templates). Default: ''.
  * 
  * @author Sergey Davydov <webmaster@sdcollection.com>
  * 
  * @copyright 2015
  */
 
-function mm_minimizableSections(
-	$sections = '',
-	$roles = '',
-	$templates = '',
-	$minimizedByDefault = ''
-){
-	if (!useThisRule($roles, $templates)){return;}
+function mm_minimizableSections($params = []){
+	//For backward compatibility
+	if (
+		!is_array($params) &&
+		!is_object($params)
+	){
+		//Convert ordered list of params to named
+		$params = ddTools::orderedParamsToNamed([
+			'paramsList' => func_get_args(),
+			'compliance' => [
+				'sections',
+				'roles',
+				'templates',
+				'minimizedByDefault'
+			]
+		]);
+	}
+	
+	//Defaults
+	$params = (object) array_merge([
+		'sections' => '',
+		'minimizedByDefault' => '',
+		'roles' => '',
+		'templates' => ''
+	], (array) $params);
+	
+	if (!useThisRule($params->roles, $params->templates)){return;}
 	
 	global $modx;
 	$e = &$modx->Event;
@@ -37,23 +59,23 @@ function mm_minimizableSections(
 		
 		$e->output($output);
 	}else if ($e->name == 'OnDocFormRender'){
-		if ($sections == ''){$sections = '*';}
+		if ($params->sections == ''){$params->sections = '*';}
 		
-		$sections = makeArray($sections);
-		$minimizedByDefault = makeArray($minimizedByDefault);
+		$params->sections = makeArray($params->sections);
+		$params->minimizedByDefault = makeArray($params->minimizedByDefault);
 		
-		$sections = array_map('mm_minimizableSections_prepareSectionHeaderSelector', $sections);
-		$minimizedByDefault = array_map('mm_minimizableSections_prepareSectionHeaderSelector', $minimizedByDefault);
+		$params->sections = array_map('mm_minimizableSections_prepareSectionHeaderSelector', $params->sections);
+		$params->minimizedByDefault = array_map('mm_minimizableSections_prepareSectionHeaderSelector', $params->minimizedByDefault);
 		
 		$output .= '//---------- mm_minimizableSections :: Begin -----'.PHP_EOL;
 		
 		$output .= '
-$j("'.implode(',', $sections).'", "#documentPane").addClass("minimizable").on("click", function(){
+$j("'.implode(',', $params->sections).'", "#documentPane").addClass("minimizable").on("click", function(){
 	var $this = $j(this);
 	
 	$this.next().slideToggle(400, function(){$this.toggleClass("minimized");});
 });
-$j(".minimizable").filter("'.implode(',', $minimizedByDefault).'").addClass("minimized").next().hide();
+$j(".minimizable").filter("'.implode(',', $params->minimizedByDefault).'").addClass("minimized").next().hide();
 ';
 		
 		$output .= '//---------- mm_minimizableSections :: End -----'.PHP_EOL;
@@ -78,6 +100,8 @@ function mm_minimizableSections_prepareSectionHeaderSelector($sectionId){
 			$result = '#sectionAccessHeader';
 		break;
 		
+		case '':
+		//For backward compatibility
 		case '*':
 			$result = '.sectionHeader';
 		break;
