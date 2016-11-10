@@ -10,7 +10,7 @@
  * @param $sections {string_commaSeparated} — The id(s) of the sections this should apply to. Use '*' for apply to all. @required
  * @param $roles {string_commaSeparated} — The roles that the widget is applied to (when this parameter is empty then widget is applied to the all roles). Default: ''.
  * @param $templates {string_commaSeparated} — Id of the templates to which this widget is applied (when this parameter is empty then widget is applied to the all templates). Default: ''.
- * @param $minimized {string_commaSeparated} — The id(s) of the sections this should be minimized by default. Default: ''.
+ * @param $minimizedByDefault {string_commaSeparated} — The id(s) of the sections this should be minimized by default. Default: ''.
  * 
  * @author Sergey Davydov <webmaster@sdcollection.com>
  * 
@@ -21,7 +21,7 @@ function mm_minimizableSections(
 	$sections,
 	$roles = '',
 	$templates = '',
-	$minimized = ''
+	$minimizedByDefault = ''
 ){
 	if (!useThisRule($roles, $templates)){return;}
 	
@@ -38,10 +38,10 @@ function mm_minimizableSections(
 		$e->output($output);
 	}else if ($e->name == 'OnDocFormRender'){
 		$sections = makeArray($sections);
-		$minimized = makeArray($minimized);
+		$minimizedByDefault = makeArray($minimizedByDefault);
 		
 		$sections = array_map('mm_minimizableSections_prepareSectionHeaderSelector', $sections);
-		$minimized = array_map('mm_minimizableSections_prepareSectionHeaderSelector', $minimized);
+		$minimizedByDefault = array_map('mm_minimizableSections_prepareSectionHeaderSelector', $minimizedByDefault);
 		
 		$output .= '//---------- mm_minimizableSections :: Begin -----'.PHP_EOL;
 		
@@ -51,7 +51,7 @@ $j("'.implode(',', $sections).'", "#documentPane").addClass("minimizable").on("c
 	
 	$this.next().slideToggle(400, function(){$this.toggleClass("minimized");});
 });
-$j(".minimizable").filter("'.implode(',', $minimized).'").addClass("minimized").next().hide();
+$j(".minimizable").filter("'.implode(',', $minimizedByDefault).'").addClass("minimized").next().hide();
 ';
 		
 		$output .= '//---------- mm_minimizableSections :: End -----'.PHP_EOL;
