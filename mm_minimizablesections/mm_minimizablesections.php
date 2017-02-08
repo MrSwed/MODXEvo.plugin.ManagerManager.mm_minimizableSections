@@ -1,7 +1,7 @@
 <?php
 /**
 	* mm_minimizableSections
-	* @version 0.2 (2015-05-30)
+	* @version 0.2.1 (2016-11-10)
 	*
 	* @desc A widget for ManagerManager plugin that allows one, few or all sections to be minimizable on the document edit page.
 	*
