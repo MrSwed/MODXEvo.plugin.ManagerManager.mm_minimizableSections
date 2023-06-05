@@ -82,7 +82,7 @@ function mm_minimizableSections($params = []){
 		);
 		
 		$e->output($output);
-	}else if ($e->name == 'OnDocFormRender'){
+	}elseif ($e->name == 'OnDocFormRender'){
 		if ($params->sections == ''){
 			$params->sections = '*';
 		}
