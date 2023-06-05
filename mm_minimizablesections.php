@@ -1,13 +1,13 @@
 <?php
 /**
  * mm_minimizableSections
- * @version 0.3 (2016-11-11)
+ * @version 1.0 (2023-06-06)
  * 
  * @see README.md
  * 
  * @link https://code.divandesign.ru/modx/mm_minimizablesections
  * 
- * @copyright 2015–2016
+ * @copyright 2015–2023
  */
 
 function mm_minimizableSections($params = []){

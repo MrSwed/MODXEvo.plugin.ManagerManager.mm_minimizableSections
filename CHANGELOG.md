@@ -1,6 +1,15 @@
 # (MODX)EvolutionCMS.plugins.ManagerManager.mm_minimizableSections changelog
 
 
+## Version 1.0 (2023-06-06)
+* \+ Style has been improved.
+* \* The widget works fine even if applied several times to the same sections.
+* \* Fixed a bug where sections weren't minimized by default.
+* \+ README, README_ru.
+* \+ CHANGELOG, CHANGELOG_ru.
+* \+ Composer.json.
+
+
 ## Version 0.3 (2016-11-11)
 * \* Parameters: The widget now uses “named” parameters, see README → Examples (with backward compatibility).
 * \* Parameters → `$params->sections`:

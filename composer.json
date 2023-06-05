@@ -1,6 +1,6 @@
 {
 	"name": "dd/evolutioncms-plugins-managermanager-mm_minimizablesections",
-	"version": "0.3.0",
+	"version": "1.0.0",
 	"description": "A widget for ManagerManager plugin that allows sections to be minimizable on the document edit page.",
 	"keywords": [
 		"modx",
