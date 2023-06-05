@@ -63,11 +63,10 @@ function mm_minimizableSections($params = []){
 	}
 	
 	global $modx;
-	$e = &$modx->Event;
 	
 	$output = '';
 	
-	if ($e->name == 'OnDocFormPrerender'){
+	if ($modx->Event->name == 'OnDocFormPrerender'){
 		$widgetDir = $modx->config['site_url'] . 'assets/plugins/managermanager/widgets/mm_minimizablesections/';
 		
 		$output .= includeJsCss(
@@ -81,8 +80,8 @@ function mm_minimizableSections($params = []){
 			'1.0.1'
 		);
 		
-		$e->output($output);
-	}elseif ($e->name == 'OnDocFormRender'){
+		$modx->Event->output($output);
+	}elseif ($modx->Event->name == 'OnDocFormRender'){
 		if ($params->sections == ''){
 			$params->sections = '*';
 		}
@@ -106,7 +105,7 @@ $j("' . implode(',', $params->sections) . '", "#documentPane").mm_minimizableSec
 });
 ';
 		
-		$e->output($output);
+		$modx->Event->output($output);
 	}
 }
 
