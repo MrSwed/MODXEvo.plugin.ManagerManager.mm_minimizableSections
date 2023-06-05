@@ -1,6 +1,6 @@
 /**
  * jQuery.ddMM.mm_minimizableSections
- * @version 1.0.2 (2023-06-06)
+ * @version 1.1 (2023-06-06)
  * 
  * @copyright 2016–2023
  */
@@ -44,7 +44,7 @@ $.ddMM.mm_minimizableSections = {
 
 /**
  * jQuery.fn.mm_minimizableSections
- * @version 1.0.2 (2023-06-06)
+ * @version 1.1 (2023-06-06)
  * 
  * @uses jQuery.ddMM.mm_minimizableSections
  * 
@@ -58,6 +58,7 @@ $.fn.mm_minimizableSections = function(params){
 	
 	$this
 		.addClass(_this.defaults.classNames.header)
+		.append('<div class="mm_minimizableSections_header_icon"><i class="far fa-minus-square"></i><i class="far fa-plus-square"></i></div>')
 		.on(
 		'click',
 			function(){
