@@ -5,7 +5,7 @@
  * 
  * @see README.md
  * 
- * @link https://code.divandesign.biz/modx/mm_minimizablesections
+ * @link https://code.divandesign.ru/modx/mm_minimizablesections
  * 
  * @copyright 2015–2016
  */
