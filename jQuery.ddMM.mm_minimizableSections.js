@@ -1,6 +1,6 @@
 /**
  * jQuery.ddMM.mm_minimizableSections
- * @version 1.0.1 (2023-06-05)
+ * @version 1.0.2 (2023-06-06)
  * 
  * @copyright 2016–2023
  */
@@ -44,32 +44,40 @@ $.ddMM.mm_minimizableSections = {
 
 /**
  * jQuery.fn.mm_minimizableSections
- * @version 1.0.1 (2023-06-05)
+ * @version 1.0.2 (2023-06-06)
  * 
  * @uses jQuery.ddMM.mm_minimizableSections
  * 
  * @copyright 2016
  */
 $.fn.mm_minimizableSections = function(params){
-	var _this = $.ddMM.mm_minimizableSections;
+	var
+		_this = $.ddMM.mm_minimizableSections,
+		$this = $(this)
+	;
+	
+	$this
+		.addClass(_this.defaults.classNames.header)
+		.on(
+		'click',
+			function(){
+				var $this = $(this);
+				
+				$this
+					.next()
+					.slideToggle(
+						400,
+						function(){
+							$this.toggleClass(_this.defaults.classNames.minimized);
+						}
+					)
+				;
+			}
+		)
+	;
 	
 	_this.init(params);
 	
-	return $(this).addClass(_this.defaults.classNames.header).on(
-		'click',
-		function(){
-			var $this = $(this);
-			
-			$this
-				.next()
-				.slideToggle(
-					400,
-					function(){
-						$this.toggleClass(_this.defaults.classNames.minimized);
-					}
-				)
-			;
-		}
-	);
+	return $this;
 };
 })(jQuery);
