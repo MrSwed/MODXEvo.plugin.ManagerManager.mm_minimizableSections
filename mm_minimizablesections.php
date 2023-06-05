@@ -65,7 +65,7 @@ function mm_minimizableSections($params = []){
 			$widgetDir . 'jQuery.ddMM.mm_minimizableSections.js',
 			'html',
 			'jQuery.ddMM.mm_minimizableSections.js',
-			'1.1'
+			'1.1.1'
 		);
 		
 		$modx->Event->output($output);
