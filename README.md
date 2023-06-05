@@ -11,7 +11,7 @@ A widget for ManagerManager plugin that allows sections to be minimizable on the
 
 ## Installation
 
-To install you must unzip the archive to `/assets/plungins/managermanager/widgets/`.
+To install you must unzip the archive to `/assets/plungins/managermanager/widgets/mm_minimizablesections/`.
 
 
 You may also read this documentation:
