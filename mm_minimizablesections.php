@@ -5,9 +5,6 @@
  * 
  * @see README.md
  * 
- * @author Sergey Davydov <webmaster@sdcollection.com>
- * @author DivanDesign <code@DivanDesign.biz>
- * 
  * @link https://code.divandesign.biz/modx/mm_minimizablesections
  * 
  * @copyright 2015–2016
