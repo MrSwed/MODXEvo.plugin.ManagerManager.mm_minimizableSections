@@ -1,8 +1,8 @@
 /**
  * jQuery.ddMM.mm_minimizableSections
- * @version 1.0 (2016-11-10)
+ * @version 1.0.1 (2023-06-05)
  * 
- * @copyright 2016
+ * @copyright 2016–2023
  */
 
 (function($){
@@ -18,7 +18,7 @@ $.ddMM.mm_minimizableSections = {
 	
 	/**
 	 * @method init
-	 * @version 1.0 (2016-11-10)
+	 * @version 1.0.1 (2023-06-05)
 	 * 
 	 * @desc Initialization.
 	 * 
@@ -32,16 +32,19 @@ $.ddMM.mm_minimizableSections = {
 		
 		if (!_this.inited){
 			//Minimize by default
-			$('.' + _this.defaults.classNames.header).filter(params.minimizedByDefault).addClass(_this.defaults.classNames.minimized).next().hide();
+			$('.' + _this.defaults.classNames.header)
+				.filter(params.minimizedByDefault)
+				.addClass(_this.defaults.classNames.minimized)
+				.next()
+				.hide()
+			;
 		}
 	}
 };
 
 /**
  * jQuery.fn.mm_minimizableSections
- * @version 1.0 (2016-11-10)
- * 
- * @desc Делает карту.
+ * @version 1.0.1 (2023-06-05)
  * 
  * @uses jQuery.ddMM.mm_minimizableSections
  * 
@@ -52,12 +55,21 @@ $.fn.mm_minimizableSections = function(params){
 	
 	_this.init(params);
 	
-	return $(this).addClass(_this.defaults.classNames.header).on('click', function(){
-		var $this = $j(this);
-		
-		$this.next().slideToggle(400, function(){
-			$this.toggleClass(_this.defaults.classNames.minimized);
-		});
-	});
+	return $(this).addClass(_this.defaults.classNames.header).on(
+		'click',
+		function(){
+			var $this = $(this);
+			
+			$this
+				.next()
+				.slideToggle(
+					400,
+					function(){
+						$this.toggleClass(_this.defaults.classNames.minimized);
+					}
+				)
+			;
+		}
+	);
 };
 })(jQuery);
