@@ -41,15 +41,17 @@ function mm_minimizableSections($params = []){
 	}
 	
 	//Defaults
-	$params = (object) array_merge(
-		[
-			'sections' => '',
-			'minimizedByDefault' => '',
-			'roles' => '',
-			'templates' => ''
-		],
-		(array) $params
-	);
+	$params = \DDTools\ObjectTools::extend([
+		'objects' => [
+			(object) [
+				'sections' => '',
+				'minimizedByDefault' => '',
+				'roles' => '',
+				'templates' => '',
+			],
+			$params
+		]
+	]);
 	
 	if (
 		!useThisRule(
